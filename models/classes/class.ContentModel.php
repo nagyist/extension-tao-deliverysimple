@@ -1,4 +1,5 @@
 <?php
+
 /**  
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -26,9 +27,9 @@
  * @package taoDelivery
  * @subpackage models_classes_simple
  */
-class taoSimpleDelivery_models_classes_ContentModel
-	implements taoDelivery_models_classes_ContentModel
+class taoSimpleDelivery_models_classes_ContentModel implements taoDelivery_models_classes_ContentModel
 {
+
     /**
      * The simple delivery content extension
      *
@@ -36,24 +37,29 @@ class taoSimpleDelivery_models_classes_ContentModel
      */
     private $extension;
 
-    public function __construct() {
+    public function __construct()
+    {
         // ensures the constants are loaded
         $this->extension = common_ext_ExtensionsManager::singleton()->getExtensionById('taoSimpleDelivery');
     }
-	
-	public function getClass() {
-	    return new core_kernel_classes_Class(CLASS_SIMPLE_DELIVERYCONTENT);
-	}
-	
-	/**
+
+    public function getClass()
+    {
+        return new core_kernel_classes_Class(CLASS_SIMPLE_DELIVERYCONTENT);
+    }
+
+    /**
      * (non-PHPdoc)
+     * 
      * @see taoTests_models_classes_TestModel::getAuthoring()
      */
-    public function getAuthoring( core_kernel_classes_Resource $content) {
-		common_Logger::i('Generating form for delivery content '.$content->getUri());
-        $widget = new Renderer($this->extension->getConstant('DIR_VIEWS').'templates'.DIRECTORY_SEPARATOR.'authoring.tpl');
+    public function getAuthoring(core_kernel_classes_Resource $content)
+    {
+        common_Logger::i('Generating form for delivery content ' . $content->getUri());
+        $widget = new Renderer($this->extension->getConstant('DIR_VIEWS') . 'templates' . DIRECTORY_SEPARATOR . 'authoring.tpl');
         $form = new taoSimpleDelivery_actions_form_ContentForm($this->getClass(), $content);
-        $widget->setData('formContent', $form->getForm()->render());
+        $widget->setData('formContent', $form->getForm()
+            ->render());
         $widget->setData('saveUrl', _url('save', 'Authoring', 'taoSimpleDelivery'));
         $widget->setData('formId', $form->getForm()->getName());
 		return $widget->render();
@@ -72,14 +78,10 @@ class taoSimpleDelivery_models_classes_ContentModel
      * (non-PHPdoc)
      * @see taoTests_models_classes_TestModel::onTestModelSet()
      */
-    public function delete( core_kernel_classes_Resource $content) {
+    public function delete(core_kernel_classes_Resource $content) {
     	$content->delete();
     }
     
-    public function getTests( core_kernel_classes_Resource $delivery) {
-    	return $delivery->getPropertyValues(new core_kernel_classes_Property(TEST_TESTCONTENT_PROP));
-    }
-
     /**
      * (non-PHPdoc)
      * @see taoTests_models_classes_TestModel::cloneContent()
@@ -92,8 +94,39 @@ class taoSimpleDelivery_models_classes_ContentModel
      * (non-PHPdoc)
      * @see taoTests_models_classes_TestModel::onChangeTestLabel()
      */
-    public function onChangeDeliveryLabel( core_kernel_classes_Resource $test) {
+    public function onChangeDeliveryLabel(core_kernel_classes_Resource $delivery) {
         // nothing to do
     }
+    
+    /**
+     * (non-PHPdoc)
+     * @see taoDelivery_models_classes_ContentModel::compile()
+     */
+    public function compile( core_kernel_classes_Resource $content, core_kernel_file_File $directory) {
+        try {
+            $compiler = taoSimpleDelivery_models_classes_DeliveryCompiler::singleton();
+            $serviceCall = $compiler->compileDelivery($content, $directory);            
+            return $serviceCall;
+        } catch (common_Exception $e) {
+            throw new taoDelivery_models_classes_CompilationFailedException('Compilation failed: '.$e->getMessage());
+        }
+    }
 
+    protected function getCompilationFolder( core_kernel_classes_Resource $delivery)
+    {
+        $returnValue = (string) '';
+    
+        $fs = taoDelivery_models_classes_RuntimeAccess::getFileSystem();
+        $basePath = $fs->getPath();
+        $relPath = substr($delivery->getUri(), strpos($delivery->getUri(), '#') + 1).DIRECTORY_SEPARATOR;
+        $absPath = $fs->getPath().$relPath;
+    
+        if (! is_dir($absPath)) {
+            if (! mkdir($absPath)) {
+                throw new taoDelivery_models_classes_CompilationFailedException('Could not create delivery directory \'' . $absPath . '\'');
+            }
+        }
+    
+        return $fs->createFile('', $relPath);
+    }
 }

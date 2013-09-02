@@ -31,11 +31,9 @@ class taoSimpleDelivery_actions_Authoring extends tao_actions_TaoModule
         $saved = false;
          
         $instance = $this->getCurrentInstance();
-        $testUri = $this->getRequestParameter(tao_helpers_Uri::encode(PROPERTY_DELIVERYCONTENT_TEST));
+        $testUri = tao_helpers_Uri::decode($this->getRequestParameter(tao_helpers_Uri::encode(PROPERTY_DELIVERYCONTENT_TEST)));
     
-        $saved = $instance->setPropertiesValues(array(
-            PROPERTY_DELIVERYCONTENT_TEST => $testUri
-        ));
+        $saved = $instance->editPropertyValues(new core_kernel_classes_Property(PROPERTY_DELIVERYCONTENT_TEST ), $testUri);
          
         echo json_encode(array(
             'saved' => $saved
