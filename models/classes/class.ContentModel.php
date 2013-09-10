@@ -102,14 +102,8 @@ class taoSimpleDelivery_models_classes_ContentModel implements taoDelivery_model
      * (non-PHPdoc)
      * @see taoDelivery_models_classes_ContentModel::compile()
      */
-    public function compile( core_kernel_classes_Resource $content, core_kernel_file_File $directory, core_kernel_classes_Resource $resultServer) {
-        try {
-            $compiler = new taoSimpleDelivery_models_classes_DeliveryCompiler($content);
-            $serviceCall = $compiler->compile($directory);            
-            return $serviceCall;
-        } catch (common_Exception $e) {
-            throw new taoDelivery_models_classes_CompilationFailedException('Compilation failed: '.$e->getMessage());
-        }
+    public function getCompiler(core_kernel_classes_Resource $content) {
+        return new taoSimpleDelivery_models_classes_DeliveryCompiler($content);
     }
 
     protected function getCompilationFolder( core_kernel_classes_Resource $delivery)
