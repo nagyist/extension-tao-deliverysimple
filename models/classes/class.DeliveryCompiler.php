@@ -26,7 +26,7 @@
  * @package taoSimpleDelivery
  * @subpackage models_classes
  */
-class taoSimpleDelivery_models_classes_DeliveryCompiler extends taoItems_models_classes_Compiler
+class taoSimpleDelivery_models_classes_DeliveryCompiler extends tao_models_classes_Compiler
 {
     /**
      * Compiles a simple delivery
@@ -36,11 +36,11 @@ class taoSimpleDelivery_models_classes_DeliveryCompiler extends taoItems_models_
      * @param core_kernel_classes_Resource $resultServer
      * @return tao_models_classes_service_ServiceCall
      */
-    public function compileDelivery(core_kernel_classes_Resource $deliveryContent, core_kernel_file_File $directory, core_kernel_classes_Resource $resultServer) {
+    public function compile(core_kernel_file_File $directory) {
         
-        $test = $deliveryContent->getUniquePropertyValue(new core_kernel_classes_Property(PROPERTY_DELIVERYCONTENT_TEST));
+        $test = $this->getResource()->getUniquePropertyValue(new core_kernel_classes_Property(PROPERTY_DELIVERYCONTENT_TEST));
+        $testCompiler = taoTests_models_classes_TestsService::singleton()->getCompiler($test);
         $testDirectory = $this->createSubDirectory($directory, $test);
-        $serviceCall = taoTests_models_classes_TestsService::singleton()->compileTest($test, $testDirectory, $resultServer);
-        return $serviceCall;
+        return $testCompiler->compile($testDirectory);
     }
 }
