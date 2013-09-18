@@ -8,15 +8,15 @@
     <!--
     @sourceLanguage EN
     @targetLanguage en-US
-    @source Simple delivery class
+    @source Simple
     @subject http://www.tao.lu/Ontologies/TAODelivery.rdf#SimpleDeliveryContent
     @predicate http://www.w3.org/2000/01/rdf-schema#label
     -->
-    <rdfs:label xml:lang="en-US"><![CDATA[Simple delivery class]]></rdfs:label>
+    <rdfs:label xml:lang="en-US"><![CDATA[Simple]]></rdfs:label>
     <!--
     @sourceLanguage EN
     @targetLanguage en-US
-    @source A simple delivery content model
+    @source The simple delivery content model class
     @subject http://www.tao.lu/Ontologies/TAODelivery.rdf#SimpleDeliveryContent
     @predicate http://www.w3.org/2000/01/rdf-schema#comment
     -->
