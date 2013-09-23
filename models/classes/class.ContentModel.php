@@ -105,22 +105,4 @@ class taoSimpleDelivery_models_classes_ContentModel implements taoDelivery_model
     public function getCompiler(core_kernel_classes_Resource $content) {
         return new taoSimpleDelivery_models_classes_DeliveryCompiler($content);
     }
-
-    protected function getCompilationFolder( core_kernel_classes_Resource $delivery)
-    {
-        $returnValue = (string) '';
-    
-        $fs = taoDelivery_models_classes_RuntimeAccess::getFileSystem();
-        $basePath = $fs->getPath();
-        $relPath = substr($delivery->getUri(), strpos($delivery->getUri(), '#') + 1).DIRECTORY_SEPARATOR;
-        $absPath = $fs->getPath().$relPath;
-    
-        if (! is_dir($absPath)) {
-            if (! mkdir($absPath)) {
-                throw new taoDelivery_models_classes_CompilationFailedException('Could not create delivery directory \'' . $absPath . '\'');
-            }
-        }
-    
-        return $fs->createFile('', $relPath);
-    }
 }
