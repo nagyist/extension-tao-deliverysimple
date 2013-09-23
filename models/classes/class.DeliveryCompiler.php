@@ -38,7 +38,10 @@ class taoSimpleDelivery_models_classes_DeliveryCompiler extends tao_models_class
      */
     public function compile(core_kernel_file_File $directory) {
         
-        $test = $this->getResource()->getUniquePropertyValue(new core_kernel_classes_Property(PROPERTY_DELIVERYCONTENT_TEST));
+        $test = $this->getResource()->getOnePropertyValue(new core_kernel_classes_Property(PROPERTY_DELIVERYCONTENT_TEST));
+        if (is_null($test)) {
+            throw new taoDelivery_models_classes_EmptyDeliveryException($this->getResource());
+        }
         $testCompiler = taoTests_models_classes_TestsService::singleton()->getCompiler($test);
         $testDirectory = $this->createSubDirectory($directory, $test);
         return $testCompiler->compile($testDirectory);
