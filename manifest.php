@@ -39,6 +39,11 @@ return array(
 			array('type' => 'CheckFileSystemComponent', 'value' => array('id' => 'fs_taoDelivery_includes', 'location' => 'taoDelivery/includes', 'rights' => 'rw'))
 		)
 	),
+    'managementRole' => 'http://www.tao.lu/Ontologies/TAODelivery.rdf#taoSimpleDeliveryManagerRole',
+    'acl' => array(
+        array('grant', 'http://www.tao.lu/Ontologies/TAODelivery.rdf#taoSimpleDeliveryManagerRole', array('ext'=>'taoSimpleDelivery')),
+        array('grant', 'http://www.tao.lu/Ontologies/TAODelivery.rdf#DeliveryManagerRole', array('ext'=>'taoSimpleDelivery', 'mod' => 'Authoring'))
+    ),
 	'constants' => array(
 		# actions directory
 		"DIR_ACTIONS"			=> $extpath."actions".DIRECTORY_SEPARATOR,
