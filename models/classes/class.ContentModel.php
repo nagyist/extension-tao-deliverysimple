@@ -97,12 +97,9 @@ class taoSimpleDelivery_models_classes_ContentModel implements taoDelivery_model
     public function onChangeDeliveryLabel(core_kernel_classes_Resource $delivery) {
         // nothing to do
     }
-    
-    /**
-     * (non-PHPdoc)
-     * @see taoDelivery_models_classes_ContentModel::compile()
-     */
-    public function getCompiler(core_kernel_classes_Resource $content) {
-        return new taoSimpleDelivery_models_classes_DeliveryCompiler($content);
+
+    public function getCompilerClass() {
+        return 'taoSimpleDelivery_models_classes_DeliveryCompiler';
     }
+    
 }
