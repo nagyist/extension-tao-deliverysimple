@@ -24,8 +24,9 @@ $taopath = dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'tao'.DIRECTORY_SEPARA
 
 return array(
 	'name' => 'taoSimpleDelivery',
-	'description' => 'TAO http://www.tao.lu',
-	'version' => '2.5',
+	'description' => 'Single test delivery model',
+    'license' => 'GPL-2.0',
+    'version' => '2.5',
 	'author' => 'Open Assessment Technologies, CRP Henri Tudor',
 	'dependencies' => array('taoDelivery'),
 	'models' => array(
