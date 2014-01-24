@@ -32,7 +32,10 @@ class taoSimpleDelivery_actions_form_ContentForm
     extends tao_actions_form_Instance
 {
     public function __construct($class, $content) {
-        parent::__construct($class, $content, array('excludedProperties' => array(RDFS_LABEL)));
+        parent::__construct($class, $content, array(
+            'topClazz' => CLASS_ABSTRACT_DELIVERYCONTENT,
+            'excludedProperties' => array(RDFS_LABEL)
+        ));
     }
     
     protected function initForm()
