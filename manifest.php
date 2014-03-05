@@ -23,21 +23,21 @@ $extpath = dirname(__FILE__).DIRECTORY_SEPARATOR;
 $taopath = dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'tao'.DIRECTORY_SEPARATOR;
 
 return array(
-	'name' => 'taoSimpleDelivery',
+    'id' => 'taoSimpleDelivery',
+	'name' => 'Tao simple delivery',
 	'description' => 'Single test delivery model',
     'license' => 'GPL-2.0',
-    'version' => '2.5',
+    'version' => '2.6',
 	'author' => 'Open Assessment Technologies, CRP Henri Tudor',
-	'dependencies' => array('taoDelivery'),
+	'requires' => array(
+	   'taoDelivery' => '2.6'
+	),
 	'models' => array(
 		'http://www.tao.lu/Ontologies/TAODelivery.rdf'
 	),
 	'install' => array(
 		'rdf' => array(
 				dirname(__FILE__). '/models/ontology/model.rdf',
-		),
-		'checks' => array(
-			array('type' => 'CheckFileSystemComponent', 'value' => array('id' => 'fs_taoDelivery_includes', 'location' => 'taoDelivery/includes', 'rights' => 'rw'))
 		)
 	),
     'managementRole' => 'http://www.tao.lu/Ontologies/TAODelivery.rdf#taoSimpleDeliveryManagerRole',
