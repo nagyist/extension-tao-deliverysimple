@@ -56,10 +56,10 @@ return array(
 		'BASE_PATH'				=> $extpath,
 	
 		#BASE URL (usually the domain root)
-		'BASE_URL'				=> ROOT_URL . 'taoDelivery/',
+		'BASE_URL'				=> ROOT_URL . 'taoSimpleDelivery/',
 	
 		#BASE WWW the web resources path
-		'BASE_WWW'				=> ROOT_URL . 'taoDelivery/views/',
+		'BASE_WWW'				=> ROOT_URL . 'taoSimpleDelivery/views/',
 	
 	 	#TAO extension Paths
 		'TAOBASE_WWW'			=> ROOT_URL  . 'tao/views/',

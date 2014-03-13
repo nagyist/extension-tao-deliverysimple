@@ -26,7 +26,31 @@ class taoSimpleDelivery_actions_Authoring extends tao_actions_TaoModule
 		return $model->getClass();
 	}
     
-    public function save()
+    public function wizard()
+    {
+        $this->defaultData();
+        try {
+            $formContainer = new \taoSimpleDelivery_actions_form_WizardForm(array('class' => $this->getCurrentClass()));
+            $myForm = $formContainer->getForm();
+             
+            if ($myForm->isValid() && $myForm->isSubmited()) {
+                $label = $myForm->getValue('label');
+                $test = new core_kernel_classes_Resource($myForm->getValue('test'));
+                $deliveryClass = new core_kernel_classes_Class($myForm->getValue('classUri'));
+                $success = taoSimpleDelivery_models_classes_SimpleDeliveryService::singleton()->create($deliveryClass, $test, $label);
+                $this->setData('myForm', __('Delivery created'));
+            } else {
+                $this->setData('myForm', $myForm->render());
+            }
+            
+            $this->setData('formTitle', __('Create a new Delivery'));
+            $this->setView('form_container.tpl', 'tao');
+        } catch (taoSimpleDelivery_actions_form_NoTestsException $e) {
+            $this->setView('wizard_error.tpl');
+        }
+    }
+    
+	public function save()
     {
         $saved = false;
          
