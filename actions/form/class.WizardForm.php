@@ -37,7 +37,7 @@ class taoSimpleDelivery_actions_form_WizardForm
         $this->form = new tao_helpers_form_xhtml_Form('simpleWizard');
         
         $createElt = \tao_helpers_form_FormFactory::getElement('create', 'Free');
-		$createElt->setValue('<button class="btn-info form-submiter" type="button" id="addButton">'.\tao_helpers_Icon::iconAdd().__('Create').'</button>');
+		$createElt->setValue('<button class="btn-info form-submiter" type="button" id="addButton">'.\tao_helpers_Icon::iconAdd().__('Publish').'</button>');
 		$this->form->setActions(array(), 'top');
 		$this->form->setActions(array($createElt), 'bottom');
         
@@ -62,11 +62,9 @@ class taoSimpleDelivery_actions_form_WizardForm
         $this->form->addElement($classUriElt);
         
         //create the element to select the import format
-        $formatElt = tao_helpers_form_FormFactory::getElement('label', 'Textbox');
-        $formatElt->addValidator(tao_helpers_form_FormFactory::getValidator('NotEmpty'));
-        $this->form->addElement($formatElt);
-        
+
         $formatElt = tao_helpers_form_FormFactory::getElement('test', 'Combobox');
+        $formatElt->setDescription(__('Select the test you want to publish to the test-takers'));
         $testClass = new core_kernel_classes_Class(TAO_TEST_CLASS);
         $options = array();
         foreach ($testClass->getInstances(true) as $test) {
