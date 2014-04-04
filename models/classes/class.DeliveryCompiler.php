@@ -24,7 +24,7 @@
  * @access public
  * @author Joel Bout, <joel@taotesting.com>
  * @package taoSimpleDelivery
- * @subpackage models_classes
+ 
  */
 class taoSimpleDelivery_models_classes_DeliveryCompiler extends taoDelivery_models_classes_DeliveryCompiler
 {
