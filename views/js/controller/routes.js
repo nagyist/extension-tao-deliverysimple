@@ -23,5 +23,9 @@ define(function(){
     'use strict';
 
     return {
+    	'Authoring': {
+            'css': 'authoring.css',
+            'actions': {  }
+        }
     };
 });
