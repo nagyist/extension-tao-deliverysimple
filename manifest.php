@@ -23,8 +23,8 @@ $extpath = dirname(__FILE__).DIRECTORY_SEPARATOR;
 $taopath = dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'tao'.DIRECTORY_SEPARATOR;
 
 return array(
-    'id' => 'taoSimpleDelivery',
-	'name' => 'Tao simple delivery',
+    'name' => 'taoSimpleDelivery',
+	'label' => 'Simple delivery model',
 	'description' => 'Single test delivery model',
     'license' => 'GPL-2.0',
     'version' => '2.6',
