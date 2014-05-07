@@ -44,7 +44,7 @@ class taoSimpleDelivery_actions_Authoring extends tao_actions_TaoModule
                     $this->setSessionAttribute("showNodeUri", tao_helpers_Uri::encode($assembly->getUri()));
                     $this->setData('reload', true);
                     $this->setData('message', __('Delivery created'));
-                    $this->setData('formTitle', __('Create a new Delivery'));
+                    $this->setData('formTitle', __('Create a new delivery'));
                     $this->setView('form_container.tpl', 'tao');
                 } else {
                     $this->setData('report', $report);
@@ -53,7 +53,7 @@ class taoSimpleDelivery_actions_Authoring extends tao_actions_TaoModule
                 }
             } else {
                 $this->setData('myForm', $myForm->render());
-                $this->setData('formTitle', __('Create a new Delivery'));
+                $this->setData('formTitle', __('Create a new delivery'));
                 $this->setView('form_container.tpl', 'tao');
             }
             
