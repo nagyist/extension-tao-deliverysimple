@@ -1,4 +1,4 @@
-extension-tao-testqti
-=====================
+extension-tao-deliverysimple
+===========================
 
-Extension to create QTI tests into TAO
+Extension to create simple deliveries into TAO
