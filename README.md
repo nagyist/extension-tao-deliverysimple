@@ -1,4 +1,4 @@
 extension-tao-deliverysimple
 ===========================
 
-Extension to create simple deliveries into TAO
+Extension to manage tests deliveries into TAO
