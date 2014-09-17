@@ -1,4 +1,4 @@
-<div class="main-container tao-scope" id="delivery-main-container">
+<div class="main-container" data-tpl="taoSimpleDelivery/wizard_error.tpl">
     <div class="ui-widget-header ui-corner-top ui-state-default">
     <?=__('Create a new delivery')?>
     </div>
