@@ -49,6 +49,16 @@ class taoSimpleDelivery_models_classes_ContentModel implements taoDelivery_model
     }
 
     /**
+     * 
+     * For now it is only one test
+     * 
+     * @author Lionel Lecaque, lionel@taotesting.com
+     */
+    public function addTest(core_kernel_classes_Resource $content, core_kernel_classes_Resource $test){
+        return $content->editPropertyValues(new core_kernel_classes_Property(PROPERTY_DELIVERYCONTENT_TEST ), $test->getUri());
+    }
+    
+    /**
      * (non-PHPdoc)
      * 
      * @see taoTests_models_classes_TestModel::getAuthoring()
@@ -67,7 +77,7 @@ class taoSimpleDelivery_models_classes_ContentModel implements taoDelivery_model
     
     /**
      * (non-PHPdoc)
-     * @see taoTests_models_classes_TestModel::onTestModelSet()
+     * @see taoTests_models_classes_TestModel::createContent()
      */
     public function createContent($tests = array()) {
         $content = $this->getClass()->createInstance();
@@ -76,7 +86,7 @@ class taoSimpleDelivery_models_classes_ContentModel implements taoDelivery_model
     
     /**
      * (non-PHPdoc)
-     * @see taoTests_models_classes_TestModel::onTestModelSet()
+     * @see taoTests_models_classes_TestModel::delete()
      */
     public function delete(core_kernel_classes_Resource $content) {
     	$content->delete();

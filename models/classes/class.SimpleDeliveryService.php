@@ -28,6 +28,19 @@
  */
 class taoSimpleDelivery_models_classes_SimpleDeliveryService extends tao_models_classes_Service
 {
+    
+    
+    /**
+     * 
+     * @author Lionel Lecaque, lionel@taotesting.com
+     * @return core_kernel_classes_Class
+     */
+    public function getRootClass()
+    {
+        return new core_kernel_classes_Class(CLASS_COMPILEDDELIVERY);
+    }
+    
+    
     /**
      * Creates a new simple delivery
      * 

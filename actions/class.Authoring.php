@@ -21,11 +21,31 @@
 
 class taoSimpleDelivery_actions_Authoring extends tao_actions_TaoModule
 {
-	protected function getRootClass() {
-	    $model = new taoSimpleDelivery_models_classes_ContentModel();
+	
+    private $contentModel;
+    
+    /**
+     * 
+     * @author Lionel Lecaque, lionel@taotesting.com
+     */
+    public function __construct(){
+        $this->contentModel = new taoSimpleDelivery_models_classes_ContentModel();
+    }
+    
+    /**
+     * (non-PHPdoc)
+     * @see tao_actions_TaoModule::getRootClass()
+     */
+    protected function getRootClass() {
+	    
 		return $model->getClass();
 	}
     
+	
+	/**
+	 * 
+	 * @author Lionel Lecaque, lionel@taotesting.com
+	 */
     public function wizard()
     {
         $this->defaultData();
@@ -62,6 +82,10 @@ class taoSimpleDelivery_actions_Authoring extends tao_actions_TaoModule
         }
     }
     
+    /**
+     * 
+     * @author Lionel Lecaque, lionel@taotesting.com
+     */
 	public function save()
     {
         $saved = false;
@@ -69,7 +93,8 @@ class taoSimpleDelivery_actions_Authoring extends tao_actions_TaoModule
         $instance = $this->getCurrentInstance();
         $testUri = tao_helpers_Uri::decode($this->getRequestParameter(tao_helpers_Uri::encode(PROPERTY_DELIVERYCONTENT_TEST)));
     
-        $saved = $instance->editPropertyValues(new core_kernel_classes_Property(PROPERTY_DELIVERYCONTENT_TEST ), $testUri);
+        $saved = $this->contentModel->addTest($instance, new core_kernel_classes_Resource($testUri));
+        //$saved = $instance->editPropertyValues(new core_kernel_classes_Property(PROPERTY_DELIVERYCONTENT_TEST ), $testUri);
          
         echo json_encode(array(
             'saved' => $saved
