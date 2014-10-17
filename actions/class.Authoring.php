@@ -61,7 +61,7 @@ class taoSimpleDelivery_actions_Authoring extends tao_actions_TaoModule
                 $report = taoSimpleDelivery_models_classes_SimpleDeliveryService::singleton()->create($deliveryClass, $test, $label);
                 if ($report->getType() == common_report_Report::TYPE_SUCCESS) {
                     $assembly = $report->getdata();
-                    $this->setSessionAttribute("showNodeUri", tao_helpers_Uri::encode($assembly->getUri()));
+                    $this->setData("selectNode", tao_helpers_Uri::encode($assembly->getUri()));
                     $this->setData('reload', true);
                     $this->setData('message', __('Delivery created'));
                     $this->setData('formTitle', __('Create a new delivery'));
