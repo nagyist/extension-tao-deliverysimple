@@ -59,7 +59,9 @@ class DeliveryCompilerTest extends TaoPhpUnitTestRunner
         $testsService = taoTests_models_classes_TestsService::singleton();
         
         $samplesFile = __DIR__ . '/../samples/samples.zip';
-        $report = taoQtiTest_models_classes_QtiTestService::singleton()->importMultipleTests($samplesFile);
+        $testService = taoQtiTest_models_classes_QtiTestService::singleton();
+        $rootclass = $testService->getRootclass();
+        $report = $testService->importMultipleTests($rootclass,$samplesFile);
         
         $this->assertEquals(common_report_Report::TYPE_SUCCESS, $report->getType());
         
