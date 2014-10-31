@@ -10,7 +10,7 @@
 	</div>	
 </div>
 <script type="text/javascript">
-require(['jquery', 'i18n', 'helpers', 'generis.tree.select'], function($, __, helpers) {
+require(['jquery', 'i18n', 'helpers', 'ui/feedback', 'generis.tree.select'], function($, __, helpers, feedback) {
     
     $('#saver-action-<?=get_data('formId')?>').click(function(){
         var toSend = $('#<?=get_data('formId')?>').serialize();
@@ -21,7 +21,7 @@ require(['jquery', 'i18n', 'helpers', 'generis.tree.select'], function($, __, he
             dataType: 'json',
             success: function(response) {
                 if (response.saved) {
-                    helpers.createInfoMessage(__('Selection saved successfully'));
+                    feedback().success(__('Selection saved successfully'));
                 }
             }
         });
