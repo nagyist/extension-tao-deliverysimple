@@ -1,16 +1,17 @@
-<div class="data-container" >
-	<div class="ui-widget ui-state-default ui-widget-header ui-corner-top container-title" >
-		<?=__('Select delivery test')?>
-	</div>
-	<div class="ui-widget ui-widget-content container-content">
+<section>
+	<header>
+		<h1><?=__('Select delivery test')?></h1>
+	</header>
+	<div>
 		<?=get_data('formContent')?>
 	</div>
-	<div class="ui-widget ui-widget-content ui-state-default ui-corner-bottom" style="text-align:center; padding:4px;">
-		<input id="saver-action-<?=get_data('formId')?>" type="button" value="<?=__('Save')?>" />
-	</div>	
-</div>
+	<footer>
+		<button id="saver-action-<?=get_data('formId')?>" class="btn-info small"><?=__('Save')?></button>
+	</footer	
+</section>
+
 <script type="text/javascript">
-require(['jquery', 'i18n', 'helpers', 'ui/feedback', 'generis.tree.select'], function($, __, helpers, feedback) {
+require(['jquery', 'i18n', 'ui/feedback'], function($, __, feedback) {
     
     $('#saver-action-<?=get_data('formId')?>').click(function(){
         var toSend = $('#<?=get_data('formId')?>').serialize();
