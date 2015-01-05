@@ -37,7 +37,7 @@ class DeliveryCompilerTest extends TaoPhpUnitTestRunner
 
     /**
      *
-     * @var taoDelivery_models_classes_DeliveryTemplateService
+     * @var taoSimpleDelivery_models_classes_SimpleDeliveryService
      */
     protected $deliveryService = null;
 
