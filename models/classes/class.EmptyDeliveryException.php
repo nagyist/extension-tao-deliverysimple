@@ -18,16 +18,17 @@
  * 
  */
 
+use oat\taoDeliveryTemplate\model\CompilationFailedException;
+
 /**
  *  
  *
  * @access public
  * @author Joel Bout, <joel@taotesting.com>
  * @package taoItems
- 
  */
 class taoSimpleDelivery_models_classes_EmptyDeliveryException
-    extends taoDelivery_models_classes_CompilationFailedException
+    extends CompilationFailedException
     implements common_exception_UserReadableException
 {
     public function getUserMessage() {

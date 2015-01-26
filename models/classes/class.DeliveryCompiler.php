@@ -18,6 +18,8 @@
  * 
  */
 
+use oat\taoDeliveryTemplate\model\EmptyDeliveryException;
+use oat\taoDeliveryTemplate\model\DeliveryCompiler;
 /**
  * Compiles a simple Delivery
  *
@@ -26,7 +28,7 @@
  * @package taoSimpleDelivery
  
  */
-class taoSimpleDelivery_models_classes_DeliveryCompiler extends taoDelivery_models_classes_DeliveryCompiler
+class taoSimpleDelivery_models_classes_DeliveryCompiler extends DeliveryCompiler
 {
     /**
      * Compiles a simple delivery
@@ -40,7 +42,7 @@ class taoSimpleDelivery_models_classes_DeliveryCompiler extends taoDelivery_mode
         
         $test = $this->getResource()->getOnePropertyValue(new core_kernel_classes_Property(PROPERTY_DELIVERYCONTENT_TEST));
         if (is_null($test)) {
-            throw new taoDelivery_models_classes_EmptyDeliveryException($this->getResource());
+            throw new EmptyDeliveryException($this->getResource());
         }
         return $this->subCompile($test);
     }

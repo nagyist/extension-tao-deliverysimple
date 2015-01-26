@@ -1,4 +1,5 @@
 <?php
+use oat\taoDeliveryTemplate\model\TemplateAssemblyService;
 /**  
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -56,7 +57,7 @@ class taoSimpleDelivery_models_classes_SimpleDeliveryService extends tao_models_
         $content = $contentClass->createInstanceWithProperties(array(
             PROPERTY_DELIVERYCONTENT_TEST => $test->getUri()
         ));
-        $report = taoDelivery_models_classes_DeliveryAssemblyService::singleton()->createAssembly(
+        $report = TemplateAssemblyService::singleton()->createAssemblyByContent(
         	$deliveryClass, $content, array(RDFS_LABEL => $label)
         );
         $content->delete();

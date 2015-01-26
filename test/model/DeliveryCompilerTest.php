@@ -100,7 +100,7 @@ class DeliveryCompilerTest extends TaoPhpUnitTestRunner
     /**
      *
      * @author Lionel Lecaque, lionel@taotesting.com
-     * @expectedException \taoDelivery_models_classes_EmptyDeliveryException
+     * @expectedException oat\taoDeliveryTemplate\model\EmptyDeliveryException
      */
     public function testEmptyDeliveryCompiler(){
         $this->delivery->removePropertyValues(new core_kernel_classes_Property(PROPERTY_DELIVERYCONTENT_TEST));

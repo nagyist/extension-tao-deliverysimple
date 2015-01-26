@@ -1,5 +1,4 @@
 <?php
-
 /**  
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -19,15 +18,16 @@
  * 
  */
 
+use oat\taoDeliveryTemplate\model\ContentModel;
+
 /**
  * the simplest delivery model representing a single test
  *
  * @access public
  * @author Joel Bout, <joel.bout@tudor.lu>
- * @package taoDelivery
- 
+ * @package taoSimpleDelivery
  */
-class taoSimpleDelivery_models_classes_ContentModel implements taoDelivery_models_classes_ContentModel
+class taoSimpleDelivery_models_classes_ContentModel implements ContentModel
 {
 
     /**

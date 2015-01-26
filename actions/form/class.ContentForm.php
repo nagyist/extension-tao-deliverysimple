@@ -1,4 +1,5 @@
 <?php
+use oat\taoDeliveryTemplate\rdf\DeliveryContent;
 /**
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -33,7 +34,7 @@ class taoSimpleDelivery_actions_form_ContentForm
 {
     public function __construct($class, $content) {
         parent::__construct($class, $content, array(
-            'topClazz' => CLASS_ABSTRACT_DELIVERYCONTENT,
+            'topClazz' => DeliveryContent::CLASS_URI,
             'excludedProperties' => array(RDFS_LABEL)
         ));
     }
