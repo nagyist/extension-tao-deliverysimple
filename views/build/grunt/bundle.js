@@ -7,11 +7,12 @@ module.exports = function(grunt) {
     var root        = grunt.option('root');
     var libs        = grunt.option('mainlibs');
     var ext         = require(root + '/tao/views/build/tasks/helpers/extensions')(grunt, root);
+    var out         = 'output/taoSimpleDelivery';
 
     /**
      * Remove bundled and bundling files
      */
-    clean.taosimpledeliverybundle = ['output',  root + '/taoSimpleDelivery/views/js/controllers.min.js'];
+    clean.taosimpledeliverybundle = [out,  root + '/taoSimpleDelivery/views/js/controllers.min.js'];
     
     /**
      * Compile tao files into a bundle 
@@ -19,7 +20,7 @@ module.exports = function(grunt) {
     requirejs.taosimpledeliverybundle = {
         options: {
             baseUrl : '../js',
-            dir : 'output',
+            dir : out,
             mainConfigFile : './config/requirejs.build.js',
             paths : { 'taoSimpleDelivery' : root + '/taoSimpleDelivery/views/js' },
             modules : [{
@@ -35,8 +36,8 @@ module.exports = function(grunt) {
      */
     copy.taosimpledeliverybundle = {
         files: [
-            { src: ['output/taoSimpleDelivery/controller/routes.js'],  dest: root + '/taoSimpleDelivery/views/js/controllers.min.js' },
-            { src: ['output/taoSimpleDelivery/controller/routes.js.map'],  dest: root + '/taoSimpleDelivery/views/js/controllers.min.js.map' }
+            { src: [out + '/taoSimpleDelivery/controller/routes.js'],  dest: root + '/taoSimpleDelivery/views/js/controllers.min.js' },
+            { src: [out + '/taoSimpleDelivery/controller/routes.js.map'],  dest: root + '/taoSimpleDelivery/views/js/controllers.min.js.map' }
         ]
     };
 
