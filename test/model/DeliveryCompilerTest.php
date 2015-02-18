@@ -68,9 +68,12 @@ class DeliveryCompilerTest extends TaoPhpUnitTestRunner
         foreach ($report as $rep) {
             $this->test = $rep->getData()->rdfsResource;
         }
+        var_dump($rootClass);
+        
         $report = $this->deliveryService->create($rootClass, $this->test, 'unitDelivery instance');
         $this->assertEquals(common_report_Report::TYPE_SUCCESS, $report->getType());
         $this->delivery = $report->getData();
+        
     }
 
     /**
@@ -80,6 +83,7 @@ class DeliveryCompilerTest extends TaoPhpUnitTestRunner
     protected function tearDown()
     {
         $this->test->delete();
+        $this->assertNotNull($this->delivery);
         $this->delivery->delete();
     }
 
