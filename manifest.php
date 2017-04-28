@@ -27,7 +27,7 @@ return array(
 	'label' => 'Simple delivery model',
 	'description' => 'Single test delivery model',
     'license' => 'GPL-2.0',
-    'version' => '2.6',
+    'version' => '3.0.0',
 	'author' => 'Open Assessment Technologies, CRP Henri Tudor',
 	'requires' => array(
 	   'taoDeliveryTemplate' => '1.0'
@@ -57,8 +57,5 @@ return array(
 	
 		#BASE URL (usually the domain root)
 		'BASE_URL'				=> ROOT_URL . 'taoSimpleDelivery/',
-	
-		#BASE WWW the web resources path
-		'BASE_WWW'				=> ROOT_URL . 'taoSimpleDelivery/views/',
 	)
 );
