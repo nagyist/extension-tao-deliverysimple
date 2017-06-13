@@ -33,9 +33,6 @@ class taoSimpleDelivery_models_classes_DeliveryCompiler extends DeliveryCompiler
     /**
      * Compiles a simple delivery
      * 
-     * @param core_kernel_classes_Resource $deliveryContent
-     * @param core_kernel_file_File $directory
-     * @param core_kernel_classes_Resource $resultServer
      * @return tao_models_classes_service_ServiceCall
      */
     public function compile() {
