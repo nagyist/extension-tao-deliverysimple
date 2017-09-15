@@ -19,6 +19,8 @@
  * 
  */
 
+use oat\tao\model\TaoOntology;
+
 /**
  * Create a form from a  resource of your ontology. 
  * Each property will be a field, regarding it's widget.
@@ -65,7 +67,7 @@ class taoSimpleDelivery_actions_form_WizardForm
 
         $formatElt = tao_helpers_form_FormFactory::getElement('test', 'Combobox');
         $formatElt->setDescription(__('Select the test you want to publish to the test-takers'));
-        $testClass = new core_kernel_classes_Class(TAO_TEST_CLASS);
+        $testClass = new core_kernel_classes_Class(TaoOntology::TEST_CLASS);
         $options = array();
         foreach ($testClass->getInstances(true) as $test) {
             $options[$test->getUri()] = $test->getLabel();
