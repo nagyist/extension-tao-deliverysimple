@@ -1,4 +1,6 @@
 <?php
+
+use oat\generis\model\OntologyRdfs;
 use oat\taoDeliveryTemplate\model\TemplateAssemblyService;
 /**  
  * This program is free software; you can redistribute it and/or
@@ -58,7 +60,7 @@ class taoSimpleDelivery_models_classes_SimpleDeliveryService extends tao_models_
             PROPERTY_DELIVERYCONTENT_TEST => $test->getUri()
         ));
         $report = TemplateAssemblyService::singleton()->createAssemblyByContent(
-        	$deliveryClass, $content, array(RDFS_LABEL => $label)
+        	$deliveryClass, $content, array(OntologyRdfs::RDFS_LABEL => $label)
         );
         $content->delete();
         return $report;
