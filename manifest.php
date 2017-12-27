@@ -30,6 +30,8 @@ return array(
     'version' => '3.1.0',
 	'author' => 'Open Assessment Technologies, CRP Henri Tudor',
 	'requires' => array(
+	   'tao' => '>=12.21.0',
+	   'generis' => '>=5.9.0',
 	   'taoDeliveryTemplate' => '1.0'
 	),
 	'update' => 'oat\taoSimpleDelivery\scripts\update\Updater',
