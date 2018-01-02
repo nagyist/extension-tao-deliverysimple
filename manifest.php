@@ -27,11 +27,14 @@ return array(
 	'label' => 'Simple delivery model',
 	'description' => 'Single test delivery model',
     'license' => 'GPL-2.0',
-    'version' => '3.0.1',
+    'version' => '3.1.0',
 	'author' => 'Open Assessment Technologies, CRP Henri Tudor',
 	'requires' => array(
+	   'tao' => '>=12.21.0',
+	   'generis' => '>=5.9.0',
 	   'taoDeliveryTemplate' => '1.0'
 	),
+	'update' => 'oat\taoSimpleDelivery\scripts\update\Updater',
 	'models' => array(
 		'http://www.tao.lu/Ontologies/TAODelivery.rdf'
 	),
