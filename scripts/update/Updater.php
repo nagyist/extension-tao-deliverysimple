@@ -23,6 +23,6 @@ namespace oat\taoSimpleDelivery\scripts\update;
 class Updater extends \common_ext_ExtensionUpdater {
 
     public function update($initialVersion) {
-		$this->skip('3.0.1', '3.1.0');
+		$this->skip('3.0.1', '3.1.1');
 	}
 }
