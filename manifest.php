@@ -27,7 +27,7 @@ return array(
 	'label' => 'Simple delivery model',
 	'description' => 'Single test delivery model',
     'license' => 'GPL-2.0',
-    'version' => '3.1.2',
+    'version' => '3.1.3',
 	'author' => 'Open Assessment Technologies, CRP Henri Tudor',
 	'requires' => array(
 	   'tao' => '>=12.21.0',
